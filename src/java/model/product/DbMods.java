@@ -36,9 +36,7 @@ public class DbMods {
             String sql = "INSERT INTO product_t (product_desc, product_price, product_image) "
                     + "values (?,?,?)";
 
-            // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
-            // Only difference is that Sally's class takes care of encoding null 
-            // when necessary. And it also System.out.prints exception error messages.
+            
             PrepStatement pStatement = new PrepStatement(dbc, sql);
 
             // Encode string values into the prepared statement (wrapper class).
@@ -118,9 +116,7 @@ public class DbMods {
                     "WHERE product_id = ? "; 
  
 
-            // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
-            // Only difference is that Sally's class takes care of encoding null 
-            // when necessary. And it also System.out.prints exception error messages.
+             
             PrepStatement pStatement = new PrepStatement(dbc, sql);
 
             // Encode string values into the prepared statement (wrapper class).
