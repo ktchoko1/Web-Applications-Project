@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+ 
+<html>
+    <head>
+        <title>Filter Table</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #mInput {
+               // background-image: url('/css/searchicon.png');
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+            th,td{
+                text-align: left; /* Left-align text */
+                padding: 12px; /* Add padding */
+            }
+            tr {
+                /* Add a bottom border to all table rows */
+                border-bottom: 1px solid #ddd;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="myInput" onkeyup="filterObj.useFilter()" placeholder="Search for names..">
+        <table id="myTable"></table> <br/>
+        
+        <script src="filterTable.js"></script>
+        <script>
+            var filterTable = new FilterTable();
+            var filterObj = filterTable.makeFilter({
+                id: "myTable",
+                data: [
+                    {email: "ktchoko@gmail.com", password: "abc",  address: "2375 Woodward st",  phone: "267-207-5762"},
+                    {email: "claudley@gmail.com", password: "def",  address: "200 ward st",  phone: "267-207-5762"},
+                    {email: "adidjatoum@gmail.com", password: "ghi",  address: "752 greeby st",  phone: "267-207-5762"},
+                    {email: "boby@gmail.com", password: "jkl",  address: "1522 howell st",  phone: "267-207-5762"},
+                    {email: "erick@gmail.com", password: "mno",  address: "237 maggee st",  phone: "267-207-5762"},
+                    {email: "absol@gmail.com", password: "pqr",  address: "375 levic st",  phone: "267-207-5762"},
+                    {email: "chris@gmail.com", password: "stu",  address: "175 yellow st",  phone: "267-207-5762"},
+                    {email: "zoe@gmail.com", password: "vwx",  address: "257 sell st",  phone: "267-207-5762"},
+                    {email: "divine@gmail.com", password: "yza",  address: "6800 ball st",  phone: "267-207-5762"}
+                ],
+                barID: "myInput"
+              
+            });
+            
+        </script>
+    </body>
+</html>
+
+
+

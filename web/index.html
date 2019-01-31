@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blessed Business</title>
+
+
+
+        <!-- This is how you link to an external style sheet. -->
+       <link href="style/myStyle.css" rel="stylesheet" type="text/css" />
+       <link href="style/listStyle.css" rel="stylesheet" type="text/css" />
+       <link href="style/insertStyle.css" rel="stylesheet" type="text/css" /> 
+
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="pageTitle">
+                BLESSED BUSINESS
+            </div>
+            <div id="nav">
+                <div class="menu">
+                    <a onclick = " ajax('htmlPartials/homeContent.html', setContent, setError)">Home</a>
+                </div>
+                <div class="menu" onclick="toggleSubMenu(this)">
+                    <div>Data</div>
+                    <div class="submenu">
+                        <a onclick = "userCRUD.list()">User</a><br/>
+                        <a onclick = "productCRUD.list()">Products</a><br/>
+                        <a onclick = "purchaseCRUD.list()">Purchases</a><br/>
+                        
+                         
+                    </div>
+                </div>
+                <div class="menu">
+                    <a onclick = " ajax('htmlPartials/blogContent.html', setContent, setError)">Blog</a>
+                </div>
+                <div class="menu" onclick="toggleSubMenu(this)">
+                    <div>Account</div>
+                    <div class="submenu">
+                        <a onclick = "ajax('htmlPartials/logon.html', setContent, setError)">Log on</a><br/>
+                        <a onclick = "ajax('webAPIs/logoffAPI.jsp', setLogOffContent, setError)">Log off</a><br/>
+                        <a onclick = "ajax('webAPIs/getProfileAPI.jsp', setUserContent, setError)">Profile</a>
+                    </div>
+                </div>
+                
+                 <div class="menu" onclick="toggleSubMenu(this)">
+                    <div>Tutorial</div>
+                    <div class="submenu">
+                     <a onclick = " ajax('htmlPartials/tutorial.html', setContent, setError)">Details</a>
+                     <a href="tutorial/sample.html">Test</a>
+                        
+                    </div>
+                </div>
+                 
+                  
+            </div>
+            <span class="stopFloat"></span>
+        </div>
+
+        <div id="content">
+        </div> <!-- content. [[Keep track of nesting]] -->
+
+        <div id="footer">
+            Kouassi Tchokoto
+        </div>
+       
+
+        <!-- It is as if the code from this javascript file was copy/pasted here. -->
+        <script src="js/toggleMenue.js"></script>
+        <script src="js/ajax.js"></script>
+        <script src="js/buildTable.js"></script>
+        <script src="js/logon.js"></script>
+        <script src="js/userCRUD.js"></script>
+        <script src="js/productCRUD.js"></script>
+        <script src="js/purchaseCRUD.js"></script>
+        <script src="js/makePickList.js"></script>
+        
+
+        <script>
+
+            // Make s<ure initial page load has home content displayed.
+            // ajaxCall will read from file "homeContente.html" then place those results in
+            // the HTML element with id "content".
+            ajax("htmlPartials/homeContent.html", setContent, setError);
+
+            // Place the contents of the file url into the
+            // innerHTML property of the HTML element with id "content".
+            function setContent(httpRequest) {
+                console.log("Ajax call was successful.");
+                document.getElementById("content").innerHTML = httpRequest.responseText;
+            }
+
+            function setError(httpRequest) {
+                console.log("Ajax call was NOT successful.");
+                console.log(httpRequest);
+                document.getElementById("content").innerHTML = httpRequest.errorMsg;
+            }
+
+           function setUserContent(httpRequest) {
+
+                console.log("listUsersResponse - here is the value of httpRequest object (next line)");
+                console.log(httpRequest);
+
+                var dataList = document.createElement("div");
+                dataList.id = "dataList"; // this is for styling the HTML table.
+                document.getElementById("content").innerHTML = "";
+                document.getElementById("content").appendChild(dataList);
+
+
+                var obj = JSON.parse(httpRequest.responseText);
+
+                if (obj === null) {
+                    target.innerHTML = "listUsersResponse Error: JSON string evaluated to null.";
+                    return;
+                }
+                
+                for (var i = 0; i< obj.webUserList.length; i++) {
+                            delete obj.webUserList[i].userPassword2;
+                        }
+
+//                        // buildTable Parameters:
+//                        // First:  array of objects that are to be built into an HTML table.
+//                        // Second: string that is database error (if any) or empty string if all OK.
+//                        // Third:  reference to DOM object where built table is to be stored.
+//                        var target = document.getElementById("content");
+//                        target.innerHTML = "<br/>"; // clear out old content and add new line spacing
+                buildTable(obj.webUserList, obj.dbError, dataList);
+
+            } // end of processResponse
+            
+
+            function setLogOffContent(httpRequest) {
+                console.log("Successfully logged off");
+                document.getElementById("content").innerHTML = "You are logged out";
+            }
+ 
+
+
+
+
+        </script>
+
+        <div id="footer">
+            Kouassi Tchokoto
+        </div>
+
+
+
+    </body>
+</html>

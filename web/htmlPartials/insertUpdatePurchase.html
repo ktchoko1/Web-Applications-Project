@@ -1,0 +1,56 @@
+ 
+
+<div id="insertArea">
+
+    <table>
+         
+        <tr id='purchaseIdRow'>
+            <td>Purchase Id</td>
+            <td><input type="text"  id="purchaseId" disabled="disabled"/></td>
+            <td id="purchaseIdError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Purchase Quantity</td>
+            <td><input type="text"  id="purchaseQty" /></td>
+            <td id="purchaseQtyError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Purchase Date</td>
+            <td><input type="text" id="purchaseDate" /></td>
+            <td id="purchaseDateError" class="error"></td>
+        </tr>
+         <tr>
+            <td>User Email</td>  
+            <td>
+                <select id="rolePickList">
+                    <!-- JS code will make ajax call to get all the roles 
+                    then populate this select tag's options with those roles -->
+                </select>
+            </td>
+
+            <td id="webUserIdError" class="error"></td>
+        </tr>
+          <tr>
+            <td>Product Description</td>  
+            <td>
+                <select id="rolePickList2">
+                    <!-- JS code will make ajax call to get all the roles 
+                    then populate this select tag's options with those roles -->
+                </select>
+            </td>
+
+            <td id="productIdError" class="error"></td>
+        </tr>
+          
+        
+        <tr>
+            <!-- see js/insertUser.js to see the insertUser function (make sure index.html referencesinvokes the js file) -->
+             <td>
+                <button id="insertSavePurchaseButton" onclick="purchaseCRUD.insertSave()">Insert Save</button>
+                <button id="updateSavePurchaseButton" onclick="purchaseCRUD.updateSave()">Update Save</button>
+            </td>
+            <td id="recordError" class="error"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,233 @@
+ <!--  This is not a complete HTML page. It just has the HTML that should go in the content area of your page. -->
+
+<!-- These style rules will be applied after (or on top of) any other styles defined in the header of the template -->
+<style>
+    #content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    h2{
+        color:blue;
+    }
+
+    #content p {
+        margin-left: 1em; /* indent paragraphs inside of content (indent amount is the size of a captial "M") */
+    }
+    .blog {
+        padding: 10px;
+        background-color: lightblue;
+        margin: 15px;
+        font-size: 16px;
+        color: #002546;
+            
+    }
+   .blog  a:hover {
+        color: red; 
+        
+    }
+</style>
+
+<div class="blog">
+    <h2 style="text-align: center">Filter Table Framework Tutorial with Java Script </h2>
+
+<p>
+    The tutorial shows how to create filter table framework style using java script. The java script function "FilterTable()" that filter the table is a
+    public function and contains four privates functions and one method. Follow these step to create the framework: create a function and give it a name like FilterTable().<br>
+    
+</p>
+ 
+</div >
+
+<div class="blog">
+    
+<h2>Step 1 </h2>
+<p>
+   Create a global variable that hold the table. var filterTable = {};   
+</p>
+ 
+</div>
+
+
+<div class="blog">
+
+<h2>Step 2:</h2>
+
+    Create method  filterTable.makeFilter = function (params) wit one parameter "params". It can be any other name of your choice. set the default parameter that design the 
+    table and assign default header names.
+    <pre>
+        params.firstHead = params.firstHead || "Email Address";
+        params.secondHead = params.secondHead || "Password ";
+        params.thirdHead = params.thirdHead || " Home Address";
+        params.fourthHead = params.fourthHead || "Phone Number";
+        params.barID = params.barID || "myInput";
+
+        var tableData = params.data;
+        var title1 = params.firstHead;
+        var title2 = params.secondHead;
+        var title3 = params.thirdHead;
+        var title4 = params.fourthHead;
+        var barID = params.barID;
+
+        var filterObj = $(params.id);
+
+        filterObj.style.borderCollapse = "collapse";
+        filterObj.style.width = "100%";
+        filterObj.style.border = "1px solid #ddd";
+        filterObj.style.fontSize = "18 px";
+
+
+
+        var tr = null;
+        var td1 = null;
+        var td2 = null;
+        var td3 = null;
+        var td4 = null;
+
+    </pre>
+
+
+</div>
+
+<div class="blog">
+<h2>Step 3:</h2>
+
+    Create function that will create the head object and append that to row
+<pre>
+  function createTHead() {
+
+            var header = document.createElement("thead");
+            var tr = document.createElement("tr");
+            header.appendChild(tr);
+            header.style.backgroundColor = "#f1f1f1";
+
+            filterObj.appendChild(header);
+
+            var th1 = document.createElement("th");
+            th1.innerHTML = title1;
+            var th2 = document.createElement("th");
+            th2.innerHTML = title2;
+            var th3 = document.createElement("th");
+            th3.innerHTML = title3;
+            var th4 = document.createElement("th");
+            th4.innerHTML = title4;
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            tr.appendChild(th4);
+
+
+        }
+
+</pre>
+
+</div>
+
+<div class="blog">
+<h2>Step 4:</h2>
+
+Create the rows and cells, then add data to them to the table.
+<pre>
+     function displayTable() {
+            for (var i = 0; i < tableData.length; i++) {
+
+                tr = document.createElement("tr");
+                filterObj.appendChild(tr);
+
+                td1 = document.createElement("td");
+                tr.appendChild(td1);
+                td1.innerHTML = tableData[i].email;
+
+                td2 = document.createElement("td");
+                tr.appendChild(td2);
+                td2.innerHTML = tableData[i].password;
+
+                td3 = document.createElement("td");
+                tr.appendChild(td3);
+                td3.innerHTML = tableData[i].address;
+
+                td4 = document.createElement("td");
+                tr.appendChild(td4);
+                td4.innerHTML = tableData[i].phone;
+            }
+        }
+
+</pre>
+ 
+</div>
+
+<div class="blog">
+<h2>Step5:</h2>
+
+Create the function the filter the table. It takes the input from the search bar and loop through the row and filter the table according to the letter characters of the word enter.
+<pre>
+   
+        function dataFilter(inputBar) {
+
+            var input, filter, table, tr, td, i;
+            input = document.getElementById(inputBar);
+            filter = input.value.toUpperCase();
+            table = filterObj;
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        } 
+</pre>
+</div>
+
+<div class="blog">
+<h2>Functionality Test</h2>
+
+<pre>
+    on the HTML page, an array of object is passed to be filtered by using the The framework style.
+
+     &lt;body>
+        &lt;input type="text" id="myInput" onkeyup="filterObj.useFilter()" placeholder="Search for names..">
+        &lt;div id="myTable">&lt;/div> &lt;br/>
+        
+        &lt;script src="filterTable.js">&lt;/script>
+        &lt;script>
+            var filterTable = new FilterTable();
+            var filterObj = filterTable.makeFilter({
+                id: "myTable",
+                data: [
+                    {email: "ktchoko@gmail.com", password: "abc",  address: "2375 Woodward st",  phone: "267-207-5762"},
+                    {email: "claudley@gmail.com", password: "def",  address: "200 ward st",  phone: "267-207-5762"},
+                    {email: "adidjatoum@gmail.com", password: "ghi",  address: "752 greeby st",  phone: "267-207-5762"},
+                    {email: "boby@gmail.com", password: "jkl",  address: "1522 howell st",  phone: "267-207-5762"},
+                    {email: "erick@gmail.com", password: "mno",  address: "237 maggee st",  phone: "267-207-5762"},
+                    {email: "absol@gmail.com", password: "pqr",  address: "375 levic st",  phone: "267-207-5762"},
+                    {email: "chris@gmail.com", password: "stu",  address: "175 yellow st",  phone: "267-207-5762"},
+                    {email: "zoe@gmail.com", password: "vwx",  address: "257 sell st",  phone: "267-207-5762"},
+                    {email: "divine@gmail.com", password: "yza",  address: "6800 ball st",  phone: "267-207-5762"}
+                ],
+                barID: "myInput"
+              
+            });
+            
+        &lt;/script>
+    &lt;/body>
+
+</pre>.
+</div>
+
+<div class="blog">
+    
+<h2>Conclusion </h2>
+<p>
+    Clik  <a href="tutorial/sample.html" style="text-decoration: none; color:blue">Here</a> to see the implementation of the final code. The tutorial final version zip file can be download <a href="tutorial/TutorialC.zip" style="text-decoration: none">Tutorial</a>.  
+    This tutorial is motivated by tutorial found on <a href="https://www.w3schools.com/howto/howto_js_filter_table.asp" style="text-decoration: none; color:blue"> w3schools</a>
+</p>
+ 
+</div>
+
+
+

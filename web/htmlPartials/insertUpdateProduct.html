@@ -1,0 +1,37 @@
+ >
+
+<div id="insertArea">
+
+    <table>
+        <tr id='productIdRow'>
+            <td>Product Id</td>
+            <td><input type="text"  id="productId" disabled="disabled"/></td>
+            <td ></td> 
+        </tr>
+        <tr>
+            <td>Product Description</td>
+            <td><input type="text"  id="productDesc" /></td>
+            <td id="productDescError" class="error"></td> 
+        </tr>
+         <tr>
+            <td>Product Price</td>
+            <td><input type="text" id="productPrice" /></td>
+            <td id="productPriceError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="text"  id="productImage" /></td>
+            <td id="productImageError" class="error"></td>
+        </tr>
+        
+        <tr>
+            <!-- see js/insertUser.js to see the insertUser function (make sure index.html referencesinvokes the js file) -->
+            <td>
+                <button id="insertSaveProductButton" onclick="productCRUD.insertSave()">Insert Save</button>
+                <button id="updateSaveProductButton" onclick="productCRUD.updateSave()">Update Save</button>
+            </td>
+            <td id="recordError" class="error"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

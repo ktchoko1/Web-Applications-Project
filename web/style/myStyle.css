@@ -1,0 +1,156 @@
+
+ 
+
+html, body {
+    margin:0;  
+    padding:0;  
+}
+body {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color:#DAECFF;    
+
+    font-size:16px;
+
+}
+
+#titleNav {
+    font-family: serif;
+    color:white;
+    background-color:#002546;
+    height: 79px;
+    min-width:650px;  
+}
+#pageTitle {  
+    padding-top:10px;
+    padding-left:10px;
+    font-size:45px;
+    font-weight:bold;
+    letter-spacing: 1.5px;
+    text-align:center;
+    text-shadow:1px 2px 3px;
+    float:left;  
+}
+#nav {
+    font-size:22px;
+    letter-spacing: 1px;
+    font-weight:bold;
+    float:right;
+    text-align:center;
+    margin-right: 10px;
+}
+
+.menu {  
+    width: 75px;
+    float:left;
+    text-align:center;
+    padding: 6px;
+    padding-top:36px;
+    padding-bottom:20px;
+    margin-left:2px;
+    margin-right:2px;
+
+     
+}
+.menu {
+    margin-bottom:18px;
+}
+.menu a {
+    text-decoration:none;
+}
+.menu a:link, .menu{
+    color:white;
+}
+
+.menu a:visited {
+    color:#002546;
+}
+.menu:hover {
+    background-color:white;
+}
+
+.menu:hover a:link, .menu:hover {
+    color:#002546;
+}
+.menu:hover a:visited {
+    color:#002546;
+}
+
+.menu .submenu {
+    padding-top: 1em;
+    font-size:14px;
+    line-height:22px;
+    display:none;
+    
+}
+
+.stopFloat {  
+    clear:both;
+}
+#content {
+    padding-left:8px;
+    padding-right:8px;
+    padding-bottom: 30px;  
+}
+
+
+#footer {
+    position: fixed;
+    bottom:0px;
+    left:0xp;
+    width:100%;
+    background-color:#002546;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+
+.width33Pct {  
+    padding-top: 22px;
+    padding: 1%;
+    width:15%;
+    float:left;
+    box-sizing: border-box;
+    mid-width: 400px;
+}
+
+.width33Pctr { 
+    padding-top: 22px;
+    padding: 1%;
+    width:15%;
+    float:left;
+    box-sizing: border-box;
+    mid-width: 400px;
+}
+
+.width66Pct {  
+    padding: 1%;
+    width:70%;
+    float:left;
+    box-sizing: border-box;
+}
+
+#imgA {
+    width:100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.imgdesc {
+    text-align: center;
+    text-decoration: none;
+    color: #002546;
+    font: bolder;
+}
+#imgop {
+    opacity: 0.75;
+    filter: alpha(opacity=50);  
+    width:100%;
+    mid-width: 400px;
+    box-sizing: border-box;
+
+}
+#imgop:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);  
+
+}
